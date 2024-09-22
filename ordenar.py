@@ -7,6 +7,7 @@ from tkinter import filedialog
 
 
 def organizar_archivos_por_extension(directorio):
+    """Función que organiza los archivos de un directorio por extensión."""
     # Verificar si el directorio existe
     if not os.path.exists(directorio):
         print(f"El directorio {directorio} no existe.")
