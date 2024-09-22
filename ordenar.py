@@ -2,6 +2,8 @@
 
 import os
 import shutil
+import tkinter as tk
+from tkinter import filedialog
 
 
 def organizar_archivos_por_extension(directorio):
@@ -29,6 +31,21 @@ def organizar_archivos_por_extension(directorio):
             print(f"Movido: {archivo} -> {carpeta_destino}")
 
 
-# Ejemplo de uso
-directorio = "/ruta/del/directorio"  # Cambiar por el directorio deseado
-organizar_archivos_por_extension(directorio)
+def seleccionar_directorio():
+    """Función que permite seleccionar un directorio mediante una interfaz gráfica."""
+    root = tk.Tk()
+    root.withdraw()  # Ocultar la ventana principal
+    directorio = (
+        filedialog.askdirectory()
+    )  # Abrir cuadro de diálogo para seleccionar carpeta
+    return directorio
+
+
+# Ejemplo de uso con interfaz gráfica
+directorio_seleccionado = seleccionar_directorio()
+if directorio_seleccionado:
+    organizar_archivos_por_extension(directorio_seleccionado)
+else:
+    print("No se seleccionó ningún directorio.")
+
+version = "1.0.0"
