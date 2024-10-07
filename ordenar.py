@@ -4,6 +4,7 @@ import os
 import shutil
 import tkinter as tk
 from tkinter import filedialog
+from tkinter import messagebox
 
 
 def organizar_archivos_por_extension(directorio):
@@ -30,12 +31,14 @@ def organizar_archivos_por_extension(directorio):
             # Mover el archivo a la carpeta correspondiente
             shutil.move(ruta_archivo, os.path.join(carpeta_destino, archivo))
             print(f"Movido: {archivo} -> {carpeta_destino}")
+    messagebox.showinfo("Completo", "Se termino de ordenar los archivos")
 
 
 def seleccionar_directorio():
     """Función que permite seleccionar un directorio mediante una interfaz gráfica."""
     root = tk.Tk()
     root.withdraw()  # Ocultar la ventana principal
+    messagebox.showinfo("", "Seleccione el directorio a ordenar.")
     directorio = (
         filedialog.askdirectory()
     )  # Abrir cuadro de diálogo para seleccionar carpeta
@@ -47,6 +50,6 @@ directorio_seleccionado = seleccionar_directorio()
 if directorio_seleccionado:
     organizar_archivos_por_extension(directorio_seleccionado)
 else:
-    print("No se seleccionó ningún directorio.")
+    messagebox.showinfo("Info", " No se selecciono un directorio")
 
 version = "1.0.0"
